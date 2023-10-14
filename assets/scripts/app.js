@@ -4,6 +4,8 @@ const defaultResult = 0;
 // 디폴트값을 보여주는 변수
 let currentResult = defaultResult;
 
+let logEntries = [];
+
 // 유저로 부터 입력받는 값
 function getUserNumberInput() {
     return parseInt(userInput.value);
@@ -21,6 +23,14 @@ function add() {
     const initialResult = currentResult;
     currentResult += enteredNumber;
     createAndWriteOutput('+', initialResult, enteredNumber);
+    const logEntry = {
+        operation: 'ADD',
+        prevResult: initialResult,
+        nextResult: enteredNumber,
+        totalResult: currentResult
+    };
+    logEntries.push(logEntry);
+    console.log(logEntries[0].operation);
 }
 
 // 사칙연산 함수
