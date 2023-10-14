@@ -1,5 +1,7 @@
+// 디폴트 값
 const defaultResult = 0;
 
+// 디폴트값을 보여주는 변수
 let currentResult = defaultResult;
 
 // 유저로 부터 입력받는 값
@@ -16,29 +18,33 @@ function createAndWriteOutput(operator, resultBeforCalc, calcNumber) {
 // 사칙연산 함수
 function add() {
     const enteredNumber = getUserNumberInput();
-    createAndWriteOutput('+', currentResult, enteredNumber);
-    currentResult = currentResult + enteredNumber;
+    const initialResult = currentResult;
+    currentResult += enteredNumber;
+    createAndWriteOutput('+', initialResult, enteredNumber);
 }
 
 // 사칙연산 함수
 function subtract() {
     const enteredNumber = getUserNumberInput();
-    createAndWriteOutput('-', currentResult, enteredNumber);
-    currentResult = currentResult - enteredNumber;
+    const initialResult = currentResult;
+    currentResult -= enteredNumber;
+    createAndWriteOutput('-', initialResult, enteredNumber);
 }
 
 // 사칙연산 함수
 function multiply() {
     const enteredNumber = getUserNumberInput();
-    createAndWriteOutput('X', currentResult, enteredNumber);
-    currentResult = currentResult * enteredNumber;
+    const initialResult = currentResult;
+    currentResult *= enteredNumber;
+    createAndWriteOutput('X', initialResult, enteredNumber);
 }
 
 // 사칙연산 함수
 function divide() {
     const enteredNumber = getUserNumberInput();
-    createAndWriteOutput('/', currentResult, enteredNumber);
-    currentResult = currentResult / enteredNumber;
+    const initialResult = currentResult;
+    currentResult /= enteredNumber;
+    createAndWriteOutput('/', initialResult, enteredNumber);
 }
 
 // 이벤트 리스너
