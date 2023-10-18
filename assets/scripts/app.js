@@ -17,20 +17,25 @@ function createAndWriteOutput(operator, resultBeforCalc, calcNumber) {
     outputResult(currentResult, calcDescription); // from vendor.js
 }
 
+function writeToLog(operationIdentifier, prevResult, operationNumber, newResult) {
+    const logEntry = {
+        operation: operationIdentifier,
+        prevResult: prevResult,
+        nextResult: operationNumber,
+        totalResult: newResult
+    };
+    logEntries.push(logEntry);
+    console.log(logEntries);
+    console.log(logEntry);
+}
+
 // 사칙연산 함수
 function add() {
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
     currentResult += enteredNumber;
     createAndWriteOutput('+', initialResult, enteredNumber);
-    const logEntry = {
-        operation: 'ADD',
-        prevResult: initialResult,
-        nextResult: enteredNumber,
-        totalResult: currentResult
-    };
-    logEntries.push(logEntry);
-    console.log(logEntries[0].operation);
+    writeToLog('ADD', initialResult, enteredNumber, currentResult);
 }
 
 // 사칙연산 함수
@@ -39,6 +44,7 @@ function subtract() {
     const initialResult = currentResult;
     currentResult -= enteredNumber;
     createAndWriteOutput('-', initialResult, enteredNumber);
+    writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
 }
 
 // 사칙연산 함수
@@ -47,6 +53,7 @@ function multiply() {
     const initialResult = currentResult;
     currentResult *= enteredNumber;
     createAndWriteOutput('X', initialResult, enteredNumber);
+    writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
 }
 
 // 사칙연산 함수
@@ -55,6 +62,7 @@ function divide() {
     const initialResult = currentResult;
     currentResult /= enteredNumber;
     createAndWriteOutput('/', initialResult, enteredNumber);
+    writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
 }
 
 // 이벤트 리스너
