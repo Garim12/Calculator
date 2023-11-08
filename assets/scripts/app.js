@@ -31,6 +31,18 @@ function calculateResult(calculationType) {
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
     let mathOperator;
+
+    if (
+        calculationType !== 'add' &&
+        calculationType !== 'subtract' &&
+        calculationType !== 'multiply' &&
+        calculationType !== 'divide' ||
+        !enteredNumber
+    ) {
+        return;
+
+    }
+
     if (calculationType === 'add') {
         currentResult += enteredNumber;
         mathOperator = '+';
